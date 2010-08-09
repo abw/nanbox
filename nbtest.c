@@ -12,8 +12,8 @@ main(
     char **argv, 
     char **env)
 {
-    printf("%s %d %s\n", NB_ARCH_NAME, NB_ARCH_BITS, NB_ENDIAN);
-    plan_tests(2);
+    printf("%s %d bits %s endian\n", NB_ARCH_NAME, NB_ARCH_BITS, NB_ENDIAN);
+    plan_tests(10);
     test_value();
     return exit_status();
 }
@@ -23,10 +23,10 @@ void test_value() {
     pass("testing value");
     nb_value_t value;
 
-    printf("NAN64:\n");
-    nb_dump_u64(NB_NAN_MASK);
     printf("NUM64:\n");
     nb_dump_u64(NB_TAG_NUM_MASK);
+    printf("NAN64:\n");
+    nb_dump_u64(NB_NAN_MASK);
     printf("INT64:\n");
     nb_dump_u64(NB_TAG_INT_MASK);
     printf("STR64:\n");

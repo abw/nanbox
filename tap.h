@@ -29,6 +29,8 @@
  *
  */
 
+#include <stdio.h>
+
 // TODO: pass this in as an environment variable
 #ifndef TAP_COLOR
 # define TAP_COLOR 1

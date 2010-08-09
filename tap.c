@@ -29,6 +29,7 @@
  *
  */
 
+#define _GNU_SOURCE
 #include <ctype.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -61,6 +62,7 @@ static char *todo_msg = NULL;
 static char *todo_msg_fixed = "libtap malloc issue";
 static int todo = 0;
 static int test_died = 0;
+int dud;
 
 /* Encapsulate the pthread code in a conditional.  In the absence of
    libpthread the code does nothing */
@@ -102,7 +104,7 @@ _gen_result(int ok, const char *func, char *file, unsigned int line,
        expansions on it */
     if(test_name != NULL) {
         va_start(ap, test_name);
-        vasprintf(&local_test_name, test_name, ap);
+        dud = vasprintf(&local_test_name, test_name, ap);
         va_end(ap);
 
         /* Make sure the test name contains more than digits
@@ -328,7 +330,7 @@ skip(unsigned int n, char *fmt, ...)
     LOCK;
 
     va_start(ap, fmt);
-    asprintf(&skip_msg, fmt, ap);
+    dud = asprintf(&skip_msg, fmt, ap);
     va_end(ap);
 
     while(n-- > 0) {
@@ -358,7 +360,7 @@ todo_start(char *fmt, ...)
     LOCK;
 
     va_start(ap, fmt);
-    vasprintf(&todo_msg, fmt, ap);
+    dud = vasprintf(&todo_msg, fmt, ap);
     va_end(ap);
 
     todo = 1;

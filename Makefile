@@ -49,7 +49,7 @@ $(NB_TEST): $(NB_OBJECTS) $(NB_TEST)$(OBJECT_EXT)
 # general 
 
 .c.o:
-	echo $(CCCMD) -c $(SOURCE_DIR)/$< 
+	$(CCCMD) -c $(SOURCE_DIR)/$< 
 
 value.o : $(SOURCE_DIR)/value.c
 nbtest.o : $(SOURCE_DIR)/nbtest.c
